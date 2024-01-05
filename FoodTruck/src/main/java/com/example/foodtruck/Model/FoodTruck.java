@@ -42,4 +42,11 @@ public class FoodTruck {
     @JoinColumn(name = "category_id",referencedColumnName = "id")
     @JsonIgnore
     private Category category;
+
+
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "foodTruck")
+    @PrimaryKeyJoinColumn
+    private Set<Orders> orders;
+
 }

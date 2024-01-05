@@ -2,8 +2,10 @@ package com.example.foodtruck.Service;
 
 import com.example.foodtruck.ApiException.ApiException;
 import com.example.foodtruck.DTO.OrderDTO;
+import com.example.foodtruck.Model.FoodTruck;
 import com.example.foodtruck.Model.Orders;
 import com.example.foodtruck.Model.User;
+import com.example.foodtruck.Repository.FoodTruckRepository;
 import com.example.foodtruck.Repository.OrderRepository;
 import com.example.foodtruck.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,15 +18,20 @@ import java.util.List;
 public class OrderService {
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
+    private final FoodTruckRepository foodTruckRepository;
     public List<Orders> getAll(){
         return orderRepository.findAll();
     }
     public void addOrder(OrderDTO orderDTO){
         User user=userRepository.findUserById(orderDTO.getUser_id());
+        FoodTruck foodTruck=foodTruckRepository.findFoodTruckById(orderDTO.getFoodTruck_id());
         if (user == null) {
             throw new ApiException("the id user not found");
         }
-        Orders order=new Orders(null,orderDTO.getDate(),orderDTO.getNumberOfDay(),orderDTO.getTotalPrice(),orderDTO.getOrderStatus(),orderDTO.getNote(),orderDTO.getDiscount(),user,null);
+        if (foodTruck == null) {
+            throw new ApiException("the id food truck not found");
+        }
+        Orders order=new Orders(null,orderDTO.getDate(),orderDTO.getNumberOfDay(),orderDTO.getTotalPrice(),orderDTO.getOrderStatus(),orderDTO.getNote(),orderDTO.getDiscount(),user,null,foodTruck);
         orderRepository.save(order);
     }
     public void updateOrder(Integer auth ,OrderDTO orderDTO) {

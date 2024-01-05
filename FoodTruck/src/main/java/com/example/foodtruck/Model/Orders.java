@@ -33,4 +33,9 @@ public class Orders {
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "order")
     @PrimaryKeyJoinColumn
     private Ticket ticket;
+
+    @ManyToOne
+    @JoinColumn(name = "foodTruck_id",referencedColumnName = "id")
+    @JsonIgnore
+    private FoodTruck foodTruck;
 }

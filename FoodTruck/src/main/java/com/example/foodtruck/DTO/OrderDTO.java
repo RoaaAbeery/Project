@@ -14,4 +14,5 @@ public class OrderDTO {
     private String note;
     private Double discount;
     private Integer user_id;
+    private Integer foodTruck_id;
 }

@@ -33,6 +33,7 @@ public class TicketService {
         }
 
         Ticket ticket=new Ticket(null,ticketDTO.getStatus(),null,order,user);
+        ticket.setStatus("null");
         ticketRepository.save(ticket);
     }
     public void updateTicket(Integer auth,TicketDTO ticketDTO){
