@@ -1,6 +1,7 @@
 package com.example.foodtruck.Service;
 
 import com.example.foodtruck.ApiException.ApiException;
+import com.example.foodtruck.DTO.UserDTO;
 import com.example.foodtruck.Model.User;
 import com.example.foodtruck.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,12 +16,13 @@ public class UserService {
     public List<User> getAll(){
         return userRepository.findAll();
     }
-    public void addClient(User user){
+    public void addClient(UserDTO user){
 //        User add= userRepository.findUserById(user.getId());
 //        if (add == null) {
 //            throw new ApiException("the id nt found");
 //        }
-        userRepository.save(user);
+        User u=new User(null, user.getUserName(), user.getPassword(), user.getEmail(), null,null,null,null);
+        userRepository.save(u);
     }
     public void updateClint(Integer auth , User user) {
         User oldadd = userRepository.findUserById(auth);

@@ -16,10 +16,13 @@ import java.util.Set;
 @NoArgsConstructor
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private  String UserName;
     private String Password;
     private  String email;
+
+
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
     private Set<Address> addresses;
 

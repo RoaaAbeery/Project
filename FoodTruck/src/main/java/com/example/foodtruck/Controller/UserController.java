@@ -1,5 +1,6 @@
 package com.example.foodtruck.Controller;
 
+import com.example.foodtruck.DTO.UserDTO;
 import com.example.foodtruck.Model.User;
 import com.example.foodtruck.Service.UserService;
 import jakarta.validation.Valid;
@@ -18,7 +19,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userService.getAll());
     }
     @PostMapping("/add")
-    public ResponseEntity AddUser(@RequestBody @Valid User user){
+    public ResponseEntity AddUser(@RequestBody @Valid UserDTO user){
         userService.addClient(user);
         return ResponseEntity.status(HttpStatus.OK).body("added Client");
     }
