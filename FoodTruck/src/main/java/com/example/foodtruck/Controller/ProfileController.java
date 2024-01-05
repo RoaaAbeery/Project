@@ -21,12 +21,12 @@ public class ProfileController {
         profileService.addProfile(profileDTO);
         return ResponseEntity.status(HttpStatus.OK).body("added Profile");
     }
-    @PutMapping("/put")
+    @PutMapping("/put/{id}")
     public ResponseEntity UpdateProfile(@PathVariable Integer id,@RequestBody @Valid ProfileDTO profileDTO){
         profileService.updateProfile(id, profileDTO);
         return ResponseEntity.status(HttpStatus.OK).body("update Profile");
     }
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteProfile(@PathVariable Integer id){
         profileService.deleteProfile(id);
         return ResponseEntity.status(HttpStatus.OK).body("delete Profile");

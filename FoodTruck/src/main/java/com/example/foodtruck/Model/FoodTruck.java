@@ -13,8 +13,11 @@ import java.util.Set;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+
+@Table(name ="b")
 public class FoodTruck {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String License;
     private String startDate;

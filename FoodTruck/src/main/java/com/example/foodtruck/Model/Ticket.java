@@ -25,7 +25,7 @@ public class Ticket {
     @MapsId
     @JsonIgnore
     private Orders order;
-    @OneToOne(cascade = CascadeType.ALL,mappedBy = "ticket")
-    @PrimaryKeyJoinColumn
+    @ManyToOne
+    @JsonIgnore
     private User user;
 }

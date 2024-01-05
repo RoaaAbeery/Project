@@ -22,12 +22,12 @@ public class ServiceController {
         serviceService.AddService(serviceDTO);
         return ResponseEntity.status(HttpStatus.OK).body("added Service");
     }
-    @PutMapping("/put")
+    @PutMapping("/put/{id}")
     public ResponseEntity UpdateService(@PathVariable Integer id,@RequestBody @Valid ServiceDTO serviceDTO){
         serviceService.updateService(id, serviceDTO);
         return ResponseEntity.status(HttpStatus.OK).body("update Service");
     }
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteService(@PathVariable Integer id){
         serviceService.deleteService(id);
         return ResponseEntity.status(HttpStatus.OK).body("delete Service");

@@ -14,25 +14,26 @@ import java.util.Set;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "a")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private  String UserName;
-    private String Password;
+    private  String userName;
+    private String password;
     private  String email;
 
-
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    @PrimaryKeyJoinColumn
     private Set<Address> addresses;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    @PrimaryKeyJoinColumn
     private Set<Orders> orders;
 
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
     @PrimaryKeyJoinColumn
     private Profile profile;
-    @OneToOne
-    @JsonIgnore
-    private Ticket ticket;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    private Set<Ticket> ticket;
 }

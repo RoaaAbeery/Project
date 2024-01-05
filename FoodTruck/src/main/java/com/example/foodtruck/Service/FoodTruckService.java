@@ -16,11 +16,8 @@ public class FoodTruckService {
         return foodTruckRepository.findAll();
     }
     public void addFood(FoodTruck foodTruck){
-        FoodTruck food=foodTruckRepository.findFoodTruckById(foodTruck.getId());
-        if (food == null) {
-            throw new ApiException("the id nt found");
-        }
-        foodTruckRepository.save(food);
+
+        foodTruckRepository.save(foodTruck);
     }
     public void updateFoodTruck(Integer auth ,FoodTruck foodTruck) {
         FoodTruck OldFoodTruck = foodTruckRepository.findFoodTruckById(auth);

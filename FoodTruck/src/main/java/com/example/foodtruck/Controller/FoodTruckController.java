@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/Api/v1/food")
+@RequestMapping("/api/v1/food")
 public class FoodTruckController {
     private final FoodTruckService foodTruckService;
 
@@ -23,12 +23,12 @@ public class FoodTruckController {
         foodTruckService.addFood(foodTruck);
         return ResponseEntity.status(HttpStatus.OK).body("added FoodTruck");
     }
-    @PutMapping("/put")
+    @PutMapping("/put/{id}")
     public ResponseEntity UpdateFoodTruck(@PathVariable Integer id,@RequestBody @Valid FoodTruck foodTruck){
         foodTruckService.updateFoodTruck(id, foodTruck);
         return ResponseEntity.status(HttpStatus.OK).body("update FoodTruck");
     }
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteFoodTruck(@PathVariable Integer id){
         foodTruckService.deleteAddress(id);
         return ResponseEntity.status(HttpStatus.OK).body("delete FoodTruck");

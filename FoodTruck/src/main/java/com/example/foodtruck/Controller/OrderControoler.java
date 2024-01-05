@@ -22,12 +22,12 @@ public class OrderControoler {
         orderService.addOrder(orderDTO);
         return ResponseEntity.status(HttpStatus.OK).body("added Order");
     }
-    @PutMapping("/put")
+    @PutMapping("/put/{id}")
     public ResponseEntity UpdateOrder(@PathVariable Integer id,@RequestBody @Valid OrderDTO orderDTO){
         orderService.updateOrder(id, orderDTO);
         return ResponseEntity.status(HttpStatus.OK).body("update Order");
     }
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteOrder(@PathVariable Integer id){
         orderService.deleteOrder(id);
         return ResponseEntity.status(HttpStatus.OK).body("delete Order");

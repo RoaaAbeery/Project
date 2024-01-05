@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/Api/v1/user")
+@RequestMapping("/api/v1/user")
 public class UserController {
     private final UserService userService;
     @GetMapping("/get")
@@ -23,12 +23,12 @@ public class UserController {
         userService.addClient(user);
         return ResponseEntity.status(HttpStatus.OK).body("added Client");
     }
-    @PutMapping("/put")
+    @PutMapping("/put/{id}")
     public ResponseEntity UpdateUser(@PathVariable Integer id,@RequestBody @Valid User user){
         userService.updateClint(id, user);
         return ResponseEntity.status(HttpStatus.OK).body("update Client");
     }
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteUser(@PathVariable Integer id){
         userService.deletClient(id);
         return ResponseEntity.status(HttpStatus.OK).body("delete Client");

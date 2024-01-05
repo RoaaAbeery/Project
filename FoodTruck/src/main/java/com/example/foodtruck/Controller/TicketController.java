@@ -21,12 +21,12 @@ public class TicketController {
         ticketService.addTicket(ticketDTO);
         return ResponseEntity.status(HttpStatus.OK).body("added Ticket");
     }
-    @PutMapping("/put")
+    @PutMapping("/put/{id}")
     public ResponseEntity UpdateTicket(@PathVariable Integer id, @RequestBody @Valid TicketDTO ticketDTO){
         ticketService.updateTicket(id, ticketDTO);
         return ResponseEntity.status(HttpStatus.OK).body("update Ticket");
     }
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteTicket(@PathVariable Integer id){
         ticketService.deleteTicket(id);
         return ResponseEntity.status(HttpStatus.OK).body("delete Ticket");

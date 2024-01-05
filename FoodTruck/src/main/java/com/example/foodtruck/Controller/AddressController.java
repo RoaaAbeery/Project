@@ -22,12 +22,12 @@ public class AddressController {
         addressService.addAddress(addressDTO);
         return ResponseEntity.status(HttpStatus.OK).body("added Address");
     }
-    @PutMapping("/put")
+    @PutMapping("/put/{id}")
     public ResponseEntity UpdateAddress(@PathVariable Integer id,@RequestBody @Valid AddressDto addressDTO){
         addressService.updateAddress(id,addressDTO);
         return ResponseEntity.status(HttpStatus.OK).body("update Address");
     }
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteAddress(@PathVariable Integer id){
         addressService.deleteAddress(id);
         return ResponseEntity.status(HttpStatus.OK).body("delete Address");
