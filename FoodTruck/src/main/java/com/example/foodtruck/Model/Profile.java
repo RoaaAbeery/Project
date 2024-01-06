@@ -1,16 +1,15 @@
 package com.example.foodtruck.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.MapsId;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -20,12 +19,17 @@ import java.time.LocalDateTime;
 public class Profile {
     @Id
     private Integer id;
-    private String name;
-    private String address;
+    @NotNull(message = "Summary should not be empty")
+    @Column(columnDefinition = "varchar(100) not null")
     private String description;
     private LocalDateTime AccountCreationDate =LocalDateTime.now();
     ;
 
+
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    @PrimaryKeyJoinColumn
+    private Set<Address> addresses;
     @OneToOne
     @MapsId
     @JsonIgnore

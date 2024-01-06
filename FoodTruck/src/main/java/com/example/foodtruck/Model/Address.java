@@ -25,8 +25,13 @@ public class Address {
     private String street;
 
 
+//    @ManyToOne
+//    @JoinColumn(name = "user_id",referencedColumnName = "id")
+//    @JsonIgnore
+//    private User user;
+
     @ManyToOne
-    @JoinColumn(name = "user_id",referencedColumnName = "id")
+    @JoinColumn(name = "profile_id",referencedColumnName = "id")
     @JsonIgnore
-    private User user;
+    private Profile profile;
 }

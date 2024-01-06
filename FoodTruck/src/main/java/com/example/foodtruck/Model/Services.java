@@ -19,7 +19,7 @@ public class Services {
     @Id
     private Integer id;
     private  String product;
-    private String size;
+    private String size_trucks;
     private  String basicDevice;
     private String sideDevice;
     private  String Brief;

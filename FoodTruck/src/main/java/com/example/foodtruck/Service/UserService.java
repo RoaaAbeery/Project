@@ -21,7 +21,7 @@ public class UserService {
 //        if (add == null) {
 //            throw new ApiException("the id nt found");
 //        }
-        User u=new User(null, user.getUserName(), user.getPassword(), user.getEmail(), null,null,null,null);
+        User u=new User(null, user.getUserName(), user.getPassword(), user.getEmail(), null,null,null,null,null);
         userRepository.save(u);
     }
     public void updateClint(Integer auth , User user) {

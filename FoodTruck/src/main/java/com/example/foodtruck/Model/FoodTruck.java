@@ -2,6 +2,9 @@ package com.example.foodtruck.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,11 +22,18 @@ public class FoodTruck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotEmpty(message = "License should not be empty")
+    @Column(columnDefinition = "varchar(30) not null")
     private String License;
-    private String startDate;
+//    private String startDate;
+@NotNull(message = "number of day should not be empty")
+@Column(columnDefinition = "int not null")
     private Integer NumberOfEmployee;
+    @NotEmpty(message = "city should not be empty")
+    @Column(columnDefinition = "varchar(100) not null")
+    @Pattern(regexp = "^[a-zA-Z ]+$")
     private String city;
-    private String cond;
+//    private String cond;
 
 
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "foodTruck")
